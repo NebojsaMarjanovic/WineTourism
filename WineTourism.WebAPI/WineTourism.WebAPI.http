@@ -1,0 +1,6 @@
+@WineTourism.WebAPI_HostAddress = http://localhost:5116
+
+GET {{WineTourism.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
