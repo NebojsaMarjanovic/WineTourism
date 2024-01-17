@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using WineTourism.Domain.Common;
-using WineTourism.Domain.Common.Interfaces;
 
 namespace WineTourism.Domain.Entities
 {

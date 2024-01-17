@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using WineTourism.Application.Interfaces.Repositories;
+using WineTourism.Application.Contracts.Repositories;
 using WineTourism.Domain.Entities;
 using WineTourism.Shared;
 
@@ -7,7 +7,7 @@ namespace WineTourism.Application.Features.Reservations.Commands
 {
     public record CreateReservationCommand : IRequest<Result<string>>
     {
-        public int CityId { get; set; }
+        public int DestinationId { get; set; }
         public string UserId { get; set; }
         public int NumberOfPersons { get; set; }
         public bool BreakfastInHotel { get; set; }
@@ -27,15 +27,15 @@ namespace WineTourism.Application.Features.Reservations.Commands
 
         public async Task<Result<string>> Handle(CreateReservationCommand request, CancellationToken cancellationToken)
         {
-            var city = await _unitOfWork.CityRepository.GetByIdAsync(request.CityId, cancellationToken);
-            if (city != null)
+            var destination = await _unitOfWork.DestinationRepository.GetByIdAsync(request.DestinationId, cancellationToken);
+            if (destination != null)
             {
-                return await Result<string>.FailureAsync("City not found.");
+                return await Result<string>.FailureAsync("Destination not found.");
             }
             var reservation = new Reservation()
             {
                 Id = Guid.NewGuid().ToString(),
-                CityId = request.CityId,
+                DestinationId = request.DestinationId,
                 UserId = request.UserId,
                 NumberOfPersons = request.NumberOfPersons,
                 BreakfastInHotel = request.BreakfastInHotel,
@@ -46,8 +46,8 @@ namespace WineTourism.Application.Features.Reservations.Commands
 
             await _unitOfWork.ReservationRepository.AddAsync(reservation, cancellationToken);
          
-            city!.AvailableSeatsCount -= reservation.NumberOfPersons;
-            await _unitOfWork.CityRepository.UpdateAsync(city, cancellationToken);
+            destination!.AvailableSeatsCount -= reservation.NumberOfPersons;
+            await _unitOfWork.DestinationRepository.UpdateAsync(destination, cancellationToken);
 
             await _unitOfWork.Save(cancellationToken);
 

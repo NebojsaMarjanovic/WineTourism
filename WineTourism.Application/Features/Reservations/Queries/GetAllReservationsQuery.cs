@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using WineTourism.Application.Interfaces.Repositories;
+using WineTourism.Application.Contracts.Repositories;
 using WineTourism.Shared;
 
 namespace WineTourism.Application.Features.Reservations.Queries

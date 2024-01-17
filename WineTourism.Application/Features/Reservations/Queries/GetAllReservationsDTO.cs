@@ -1,11 +1,9 @@
-﻿using WineTourism.Domain.Entities;
-
-namespace WineTourism.Application.Features.Reservations.Queries
+﻿namespace WineTourism.Application.Features.Reservations.Queries
 {
     public class GetAllReservationsDTO 
     {
         public string Id { get; set; }
-        public string CityName { get; set; }
+        public string DestinationName { get; set; }
         public string UsersName { get; set; }
         public int NumberOfPersons { get; set; }
         public bool BreakfastInHotel { get; set; }

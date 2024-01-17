@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WineTourism.Application.Interfaces.Repositories;
 using WineTourism.Domain.Entities;
 using WineTourism.Persistance.Contexts;
 
@@ -26,10 +25,10 @@ namespace WineTourism.Persistance.Repositories
 
         public Task<List<Reservation>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return _dbContext.Reservations.Include(r=>r.City)
+            return _dbContext.Reservations.Include(r=>r.Destination)
                                             .Include(r=>r.User)
-                                            .Include(r=>r.City.Winery)
-                                            .Include(r => r.City.Hotel)
+                                            .Include(r=>r.Destination.Winery)
+                                            .Include(r => r.Destination.Hotel)
                                             .ToListAsync(cancellationToken);
         }
 

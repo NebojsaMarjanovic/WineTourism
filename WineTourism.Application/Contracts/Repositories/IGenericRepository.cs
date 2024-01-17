@@ -1,6 +1,4 @@
-﻿using WineTourism.Domain.Common.Interfaces;
-
-namespace WineTourism.Application.Interfaces.Repositories
+﻿namespace WineTourism.Application.Contracts.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

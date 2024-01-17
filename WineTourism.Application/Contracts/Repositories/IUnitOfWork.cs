@@ -1,12 +1,11 @@
-﻿using WineTourism.Domain.Common;
-using WineTourism.Domain.Entities;
+﻿using WineTourism.Domain.Entities;
 
-namespace WineTourism.Application.Interfaces.Repositories
+namespace WineTourism.Application.Contracts.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
         IGenericRepository<Reservation> ReservationRepository { get; }
-        IGenericRepository<City> CityRepository { get; }
+        IGenericRepository<Destination> DestinationRepository { get; }
         IGenericRepository<User> UserRepository { get; }
         IWineryRepository WineryRepository { get; }
 

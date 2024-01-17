@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WineTourism.Application.Interfaces.Repositories;
+using WineTourism.Application.Contracts.Repositories;
 using WineTourism.Persistance.Contexts;
 
 namespace WineTourism.Persistance.Repositories
