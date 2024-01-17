@@ -9,7 +9,7 @@ namespace WineTourism.Application.Contracts.Repositories
         IGenericRepository<User> UserRepository { get; }
         IWineryRepository WineryRepository { get; }
 
-        Task Save(CancellationToken cancellationToken);
+        Task Save(User user, CancellationToken cancellationToken);
         Task Rollback();
     }
 }
