@@ -11,17 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C6BB7F47-299C-4787-9599-A37306EEB2F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.Domain", "WineTourism.Domain\WineTourism.Domain.csproj", "{2F5AEC76-4DF7-4182-A16E-B5463993F6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.Domain", "WineTourism.Domain\WineTourism.Domain.csproj", "{2F5AEC76-4DF7-4182-A16E-B5463993F6AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.Application", "WineTourism.Application\WineTourism.Application.csproj", "{C5F4B1FD-DCA0-44B8-B108-A90181EB4951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.Application", "WineTourism.Application\WineTourism.Application.csproj", "{C5F4B1FD-DCA0-44B8-B108-A90181EB4951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.Infrastructure", "WineTourism.Infrastructure\WineTourism.Infrastructure.csproj", "{5A13C991-634D-439B-B906-E655EF8B6BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.Infrastructure", "WineTourism.Infrastructure\WineTourism.Infrastructure.csproj", "{5A13C991-634D-439B-B906-E655EF8B6BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.Persistance", "WineTourism.Persistance\WineTourism.Persistance.csproj", "{2D463A95-0DCA-4227-B171-0BD82AF4C7F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.Persistance", "WineTourism.Persistance\WineTourism.Persistance.csproj", "{2D463A95-0DCA-4227-B171-0BD82AF4C7F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.WebAPI", "WineTourism.WebAPI\WineTourism.WebAPI.csproj", "{7067FCD0-FF38-41CB-B7CE-618E4ECDC40B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.WebAPI", "WineTourism.WebAPI\WineTourism.WebAPI.csproj", "{7067FCD0-FF38-41CB-B7CE-618E4ECDC40B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineTourism.Shared", "WineTourism.Shared\WineTourism.Shared.csproj", "{3A2C6ED1-9B29-4D15-ACB5-8D9CE8D29423}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineTourism.Shared", "WineTourism.Shared\WineTourism.Shared.csproj", "{3A2C6ED1-9B29-4D15-ACB5-8D9CE8D29423}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F7C9138E-1536-4259-8CB8-B43D44A5F2C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{9D66EE4E-FDEE-4D22-8B3F-6A43DE91D360} = {F7C9138E-1536-4259-8CB8-B43D44A5F2C3}
+		{C4C8332F-223C-425F-B295-BB5651D11D5C} = {F7C9138E-1536-4259-8CB8-B43D44A5F2C3}
+		{B11EE0EA-7637-4FEC-94E7-2A8E88A6FF5F} = {F7C9138E-1536-4259-8CB8-B43D44A5F2C3}
+		{C6BB7F47-299C-4787-9599-A37306EEB2F9} = {F7C9138E-1536-4259-8CB8-B43D44A5F2C3}
 		{2F5AEC76-4DF7-4182-A16E-B5463993F6AD} = {9D66EE4E-FDEE-4D22-8B3F-6A43DE91D360}
 		{C5F4B1FD-DCA0-44B8-B108-A90181EB4951} = {9D66EE4E-FDEE-4D22-8B3F-6A43DE91D360}
 		{5A13C991-634D-439B-B906-E655EF8B6BC7} = {C4C8332F-223C-425F-B295-BB5651D11D5C}

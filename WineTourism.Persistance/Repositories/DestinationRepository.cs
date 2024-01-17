@@ -3,9 +3,9 @@ using WineTourism.Persistance.Contexts;
 
 namespace WineTourism.Persistance.Repositories
 {
-    public class CityRepository : GenericRepository<City>
+    public class DestinationRepository : GenericRepository<Destination>
     {
-        public CityRepository(ApplicationDbContext dbContext) : base(dbContext)
+        public DestinationRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
         }
     }
