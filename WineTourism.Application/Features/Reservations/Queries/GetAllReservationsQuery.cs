@@ -1,9 +1,5 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 using WineTourism.Application.Interfaces.Repositories;
-using WineTourism.Domain.Entities;
 using WineTourism.Shared;
 
 namespace WineTourism.Application.Features.Reservations.Queries
@@ -13,21 +9,20 @@ namespace WineTourism.Application.Features.Reservations.Queries
     internal class GetAllReservationsQueryHandler : IRequestHandler<GetAllReservationsQuery, Result<List<GetAllReservationsDTO>>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
 
-        public GetAllReservationsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetAllReservationsQueryHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<Result<List<GetAllReservationsDTO>>> Handle(GetAllReservationsQuery request, CancellationToken cancellationToken)
         {
-            var reservations = await _unitOfWork.Repository<Reservation>().Entites
-                .ProjectTo<GetAllReservationsDTO>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+            throw new NotImplementedException();
+            //var reservations = await _unitOfWork.Repository<Reservation>().Entites
+            //    .ProjectTo<GetAllReservationsDTO>(_mapper.ConfigurationProvider)
+            //    .ToListAsync(cancellationToken);
 
-            return await Result<List<GetAllReservationsDTO>>.SuccessAsync(reservations);
+            //return await Result<List<GetAllReservationsDTO>>.SuccessAsync(reservations);
         }
     }
 }

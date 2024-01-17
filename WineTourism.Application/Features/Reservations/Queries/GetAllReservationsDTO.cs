@@ -1,9 +1,8 @@
-﻿using WineTourism.Application.Common.Mappings;
-using WineTourism.Domain.Entities;
+﻿using WineTourism.Domain.Entities;
 
 namespace WineTourism.Application.Features.Reservations.Queries
 {
-    public class GetAllReservationsDTO : IMapFrom<Reservation>
+    public class GetAllReservationsDTO 
     {
         public string Id { get; set; }
         public string CityName { get; set; }

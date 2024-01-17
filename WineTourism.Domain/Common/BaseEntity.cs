@@ -2,7 +2,7 @@
 
 namespace WineTourism.Domain.Common
 {
-    public class BaseEntity : IEntity
+    public abstract class BaseEntity : IEntity
     {
         public string Id { get; set; }
     }

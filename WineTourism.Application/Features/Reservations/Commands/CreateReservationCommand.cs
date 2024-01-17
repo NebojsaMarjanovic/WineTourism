@@ -1,13 +1,11 @@
-﻿using AutoMapper;
-using MediatR;
-using WineTourism.Application.Common.Mappings;
+﻿using MediatR;
 using WineTourism.Application.Interfaces.Repositories;
 using WineTourism.Domain.Entities;
 using WineTourism.Shared;
 
 namespace WineTourism.Application.Features.Reservations.Commands
 {
-    public record CreateReservationCommand : IRequest<Result<string>>, IMapFrom<Reservation>
+    public record CreateReservationCommand : IRequest<Result<string>>
     {
         public int CityId { get; set; }
         public string UserId { get; set; }
@@ -21,12 +19,10 @@ namespace WineTourism.Application.Features.Reservations.Commands
     internal class CreateReservationCommandHandler : IRequestHandler<CreateReservationCommand, Result<string>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
 
-        public CreateReservationCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateReservationCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<Result<string>> Handle(CreateReservationCommand request, CancellationToken cancellationToken)

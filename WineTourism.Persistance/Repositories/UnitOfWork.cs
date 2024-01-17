@@ -1,11 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WineTourism.Application.Interfaces.Repositories;
+﻿using WineTourism.Application.Interfaces.Repositories;
 using WineTourism.Domain.Common;
+using WineTourism.Persistance.Contexts;
 
 namespace WineTourism.Persistance.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private readonly ApplicationDbContext _dbContext;
+
+        public UnitOfWork(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         private bool disposed;
         public void Dispose()
         {
