@@ -2,7 +2,7 @@
 
 namespace WineTourism.Domain.Entities
 {
-    public class City : BaseAuditableEntity
+    public class City : BaseEntity
     {
         public string CityName { get; set; }
         public string Description { get; set; }

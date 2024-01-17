@@ -1,5 +1,5 @@
 ﻿using WineTourism.Application.Interfaces.Repositories;
-using WineTourism.Domain.Common;
+using WineTourism.Domain.Entities;
 using WineTourism.Persistance.Contexts;
 
 namespace WineTourism.Persistance.Repositories
@@ -7,45 +7,43 @@ namespace WineTourism.Persistance.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _dbContext;
-
+        private IGenericRepository<Reservation> _reservationRepository;
+        private IGenericRepository<User> _userRepository;
+        private IWineryRepository _wineryRepository;
+        private IGenericRepository<City> _cityRepository;
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+            _reservationRepository = new ReservationRepository(_dbContext);
+            _userRepository = new UserRepository(_dbContext);
+            _wineryRepository = new WineryRepository(_dbContext);
+            _cityRepository = new CityRepository(_dbContext);
         }
 
-        private bool disposed;
+
+        public IGenericRepository<Reservation> ReservationRepository => _reservationRepository ??= new ReservationRepository(_dbContext);
+
+        public IGenericRepository<User> UserRepository => _userRepository ??= new UserRepository(_dbContext);
+
+        public IWineryRepository WineryRepository => _wineryRepository ??= new WineryRepository(_dbContext);
+
+        public IGenericRepository<City> CityRepository => _cityRepository ??= new CityRepository(_dbContext);
+
         public void Dispose()
         {
-            Dispose(true);
+            _dbContext.Dispose();
             GC.SuppressFinalize(this);
-        }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-            {
-                if (disposing)
-                {
-                    //dispose managed resources
-                    //_dbContext.Dispose();
-                }
-            }
-            //dispose unmanaged resources
-            disposed = true;
-        }
-
-        public IGenericRepository<T> Repository<T>() where T : BaseAuditableEntity
-        {
-            throw new NotImplementedException();
         }
 
         public Task Rollback()
         {
-            throw new NotImplementedException();
+            _dbContext.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            return Task.CompletedTask;
         }
 
-        public Task<int> Save(CancellationToken cancellationToken)
+        public async Task Save(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

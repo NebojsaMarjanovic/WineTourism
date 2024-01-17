@@ -27,6 +27,11 @@ namespace WineTourism.Application.Features.Reservations.Commands
 
         public async Task<Result<string>> Handle(CreateReservationCommand request, CancellationToken cancellationToken)
         {
+            var city = await _unitOfWork.CityRepository.GetByIdAsync(request.CityId, cancellationToken);
+            if (city != null)
+            {
+                return await Result<string>.FailureAsync("City not found.");
+            }
             var reservation = new Reservation()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -39,11 +44,10 @@ namespace WineTourism.Application.Features.Reservations.Commands
                 Price = request.NumberOfPersons * request.Price
             };
 
-            await _unitOfWork.Repository<Reservation>().AddAsync(reservation);
-
-            var city = await _unitOfWork.Repository<City>().GetByIdAsync(request.CityId);
-            city.AvailableSeatsCount -= reservation.NumberOfPersons;
-            await _unitOfWork.Repository<City>().UpdateAsync(city);
+            await _unitOfWork.ReservationRepository.AddAsync(reservation, cancellationToken);
+         
+            city!.AvailableSeatsCount -= reservation.NumberOfPersons;
+            await _unitOfWork.CityRepository.UpdateAsync(city, cancellationToken);
 
             await _unitOfWork.Save(cancellationToken);
 

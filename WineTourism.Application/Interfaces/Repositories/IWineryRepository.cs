@@ -2,8 +2,8 @@
 
 namespace WineTourism.Application.Interfaces.Repositories
 {
-    public interface IWineryRepository
+    public interface IWineryRepository 
     {
-        public Task<List<Winery>> SearchByCity(int cityId);
+        public Task<List<Winery>> SearchByCity(int cityId, CancellationToken cancellationToken);
     }
 }
