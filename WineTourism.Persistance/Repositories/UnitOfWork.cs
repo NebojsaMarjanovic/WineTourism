@@ -1,5 +1,4 @@
 ﻿using WineTourism.Application.Contracts.Repositories;
-using WineTourism.Domain.Common;
 using WineTourism.Domain.Entities;
 using WineTourism.Persistance.Contexts;
 
@@ -38,28 +37,8 @@ namespace WineTourism.Persistance.Repositories
             return Task.CompletedTask;
         }
 
-        public async Task Save(User user, CancellationToken cancellationToken)
+        public async Task Save(CancellationToken cancellationToken)
         {
-            var entries = _dbContext.ChangeTracker.Entries()
-                .Where(x => x.Entity is BaseAuditableEntity && (
-                x.State is Microsoft.EntityFrameworkCore.EntityState.Added
-                || x.State is Microsoft.EntityFrameworkCore.EntityState.Modified));
-
-            foreach(var entityEntry in entries)
-            {
-                if(entityEntry.State is Microsoft.EntityFrameworkCore.EntityState.Added)
-                {
-                    ((BaseAuditableEntity)entityEntry.Entity).CreatedOn = DateTime.UtcNow;
-                    ((BaseAuditableEntity)entityEntry.Entity).CreatedBy = user.Id;
-                }
-                else
-                {
-                    ((BaseAuditableEntity)entityEntry.Entity).UpdatedOn = DateTime.UtcNow;
-                    ((BaseAuditableEntity)entityEntry.Entity).UpdatedBy = user.Id;
-                }
-            }
-
-
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
