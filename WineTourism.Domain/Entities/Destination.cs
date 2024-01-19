@@ -13,7 +13,9 @@ namespace WineTourism.Domain.Entities
         public DateTime DepartureDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public Winery Winery { get; set; }
+        public string WineryId { get; set; }
         public Hotel Hotel { get; set; }
+        public string HotelId { get; set; }
         public List<Reservation> Reservations { get; set; }
 
     }

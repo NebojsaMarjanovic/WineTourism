@@ -7,7 +7,7 @@ namespace WineTourism.Application.Features.Reservations.Commands
 {
     public record CreateReservationCommand : IRequest<Result<string>>
     {
-        public int DestinationId { get; set; }
+        public string DestinationId { get; set; }
         public string UserId { get; set; }
         public int NumberOfPersons { get; set; }
         public bool BreakfastInHotel { get; set; }

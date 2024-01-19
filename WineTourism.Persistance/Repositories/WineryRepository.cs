@@ -16,7 +16,7 @@ namespace WineTourism.Persistance.Repositories
 
         public async Task<List<Winery>> SearchByDestination(int destinationId, CancellationToken cancellationToken)
         {
-            return await _dbContext.Wineries.Where(x => x.DestinationId == destinationId).ToListAsync(cancellationToken);
+            throw new NotImplementedException();
         }
     }
 }

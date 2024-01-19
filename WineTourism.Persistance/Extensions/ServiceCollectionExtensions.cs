@@ -27,6 +27,7 @@ namespace WineTourism.Persistance.Extensions
             services.AddScoped<IGenericRepository<Reservation>, ReservationRepository>();
             services.AddScoped<IGenericRepository<User>, UserRepository>();
             services.AddScoped<IWineryRepository, WineryRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
             
